@@ -84,11 +84,11 @@ Capture d'écran, fonctionnement du script:
 
 ![](images/FakeChannelEvil.png)
 
-Nous avons réussit à changer le canal dans le paquet comme on peut le voir dans le terminal situé à droite. Cependant, le changement ne se voit pas sur wireshark, il reste sur le channel 1.
+Nous avons réussit à changer le canal dans le paquet comme on peut le voir dans le terminal situé à droite. Cependant, le changement ne se voit pas sur wireshark, il reste sur le channel 1. Nous avons rencontré des difficultés pour reformer correctement le paquet.
 
 __Question__ **: Expliquer l'effet de cette attaque sur la cible**
 
-############## Réponse ##################
+L'effet de cette attaque est censé être de pouvoir faire changer de canal la personne connectée afin qu'elle se déconnecte.
 
 
 ### 3. SSID flood attack
@@ -102,4 +102,4 @@ Preuve de  fonctionnement du script:
 
 ![](images/ssidflood_proof.png)
 
-Comme nous pouvons l'apercevoir à droite nous avons crée trois APs ``K2Zweq``  ``FWCEP`` et ``YngFb51yBM`` et on les retrouve dans la liste des Ssids paquets sniffés.
+Comme nous pouvons l'apercevoir à droite nous avons crée trois APs ``K2Zweq``  ``FWCEP`` et ``YngFb51yBM`` et on les retrouve dans la liste des Ssids paquets sur Wireshark
