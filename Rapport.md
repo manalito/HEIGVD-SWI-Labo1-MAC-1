@@ -36,6 +36,16 @@ b) Développer un script en Python/Scapy capable de générer et envoyer des tra
 
 Preuve de fonctionnement du script:
 
+Nous avons fait une capture de la trame qui se deauthentifie au près de l'AP dont l adresse Mac est : 7C:95:F3:00:79:D0 
+
+
+![](images/deauthentification-screen.png)
+
+
+Nous avons egalement capturer la trame correspondant à la réauthentification.
+
+![](images/deauthentification-screen.png)   
+
 __Question__ : quels codes/raisons justifient l'envoie de la trame à la STA cible et pourquoi ?
 
 1 - Unspecified :  La raison pour laquelle on souhaite mettre fin à la connexion n'est pas spécifiée donc on peut feindre d'être l'access point et d'envoyer la trame à la station.<br/>
@@ -70,9 +80,15 @@ a)	Développer un script en Python/Scapy avec les fonctionnalités suivantes :
 
 > Chemin du script : HEIGVD-SWI-Labo1-MAC-1/Scripts/FakeChannelEvilTweenAttack.py
 
+Preuve de fonctionnement du script:
+
+############## photo de changement du canal ##################
+
+Nous avons réussi à changer le canal mais nous avions toujours la notification de packet mal formé.
+
 __Question__ **: Expliquer l'effet de cette attaque sur la cible**
 
-Preuve de fonctionnement du script:
+############## Réponse ##################
 
 
 ### 3. SSID flood attack
@@ -82,3 +98,8 @@ Développer un script en Python/Scapy capable d'inonder la salle avec des SSID d
 > Chemin du script : HEIGVD-SWI-Labo1-MAC-1/Scripts/SsidFloodAttack.py
 
 Preuve de  fonctionnement du script:
+
+
+![](images/ssidflood_proof.png)
+
+Comme nous pouvons l'apercevoir à droite nous avons crée trois APs ``K2Zweq``  ``FWCEP`` et ``YngFb51yBM`` et on les retrouve dans la liste des Ssids paquets sniffés.
