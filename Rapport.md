@@ -42,7 +42,7 @@ Nous avons fait une capture de la trame qui se deauthentifie au près de l'AP do
 ![](images/deauthentification-screen.png)
 
 
-Nous avons egalement capturer la trame correspondant à la réauthentification.
+Nous avons également capturer la trame correspondant à la réauthentification.
 
 ![](images/deauthentification-screen.png)   
 
@@ -80,11 +80,11 @@ a)	Développer un script en Python/Scapy avec les fonctionnalités suivantes :
 
 > Chemin du script : HEIGVD-SWI-Labo1-MAC-1/Scripts/FakeChannelEvilTweenAttack.py
 
-Preuve de fonctionnement du script:
+Capture d'écran, fonctionnement du script:
 
-############## photo de changement du canal ##################
+![](images/FakeChannelEvil.png)
 
-Nous avons réussi à changer le canal mais nous avions toujours la notification de packet mal formé.
+Nous avons réussit à changer le canal dans le paquet comme on peut le voir dans le terminal situé à droite. Cependant, le changement ne se voit pas sur wireshark, il reste sur le channel 1.
 
 __Question__ **: Expliquer l'effet de cette attaque sur la cible**
 

@@ -49,7 +49,9 @@ else :
 
 print(apNames)
 
-input("\nPress enter to start\n")
+input("\nAppuyer une touche pour démarrer")
+
+print('Preparation des beacons')
 
 
 # source pour les beacons: https://www.4armed.com/blog/forging-wifi-beacon-frames-using-scapy/
@@ -75,6 +77,8 @@ for ap in apNames:
 
     # Ajout de la trame à la liste
     frames.append(frame)
+
+print('Envoi des beacons en continu')
 
 # Envoi de beacon frames en continu 
 while(True):
