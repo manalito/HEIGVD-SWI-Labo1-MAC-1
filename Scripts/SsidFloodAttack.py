@@ -47,6 +47,7 @@ print(apNames)
 input("\nPress enter to start\n")
 
 # Generate a Beacon frame for each fake AP
+# source: https://www.4armed.com/blog/forging-wifi-beacon-frames-using-scapy/
 for ap in apNames:
     dot11 = Dot11(type=0, subtype=8, addr1='ff:ff:ff:ff:ff:ff',
     addr2=RandMAC(), addr3=RandMAC())
@@ -68,10 +69,10 @@ for ap in apNames:
     frame.show()
     print("\nHexdump of frame:")
     hexdump(frame)
-    
+    # add new created beacon frame to the list
     frames.append(frame)
 
-# send in continue beacons for AP list
+# send in continuous beacon frames for AP list
 while(True):
     sendp(frames[randint(0, len(frames) - 1)], iface=interface)
 
